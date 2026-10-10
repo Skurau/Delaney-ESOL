@@ -1,0 +1,72 @@
+{
+  "validation_date": "2026-10-10",
+  "execution": {
+    "python": "3.12.15 | packaged by conda-forge | (main, Oct  6 2026, 23:39:35) [MSC v.1944 64 bit (AMD64)]",
+    "results": [
+      {
+        "notebook": "01_data_exploration.ipynb",
+        "code_cells": 10,
+        "seconds": 20.75,
+        "status": "passed"
+      },
+      {
+        "notebook": "02_qspr_random_forest.ipynb",
+        "code_cells": 10,
+        "seconds": 55.7,
+        "status": "passed"
+      },
+      {
+        "notebook": "03_gnn_training.ipynb",
+        "code_cells": 12,
+        "seconds": 113.5,
+        "status": "passed"
+      }
+    ]
+  },
+  "notebooks": [
+    {
+      "notebook": "01_data_exploration.ipynb",
+      "cells": 17,
+      "code_cells": 10,
+      "all_cells_executed_in_fresh_kernel": true,
+      "sha256": "b71d401c3785258cb6c94f2e382fb5133f1dd45cb85dfdd1013b3e20bd891aad"
+    },
+    {
+      "notebook": "02_qspr_random_forest.ipynb",
+      "cells": 16,
+      "code_cells": 10,
+      "all_cells_executed_in_fresh_kernel": true,
+      "sha256": "a05be34c4300b3a4b0898d116fe36e9080e3ef10adb92c5f95732ada7f8c72c5"
+    },
+    {
+      "notebook": "03_gnn_training.ipynb",
+      "cells": 19,
+      "code_cells": 12,
+      "all_cells_executed_in_fresh_kernel": true,
+      "sha256": "b72664a40cfe10f671cc8d71ed38f483299782840a8d86df22c026c233ddea87"
+    }
+  ],
+  "dependencies": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2",
+    "rdkit": "2026.9.1",
+    "scikit-learn": "1.9.1",
+    "torch": "2.13.0",
+    "jupyterlab": "4.6.4",
+    "ipykernel": "7.4.0",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "nbconvert": "7.17.1"
+  },
+  "original_data_sha256": "3fa1b501b2f940d4b016c3798f5fcd4c897b8455a0217efbb3715ac35011f290",
+  "original_notebook_sha256": "e620e3e275fa07a94237df6b1bc961885a41909773e3847c1a38811fa51ab2e7",
+  "model_comparison_rows": 13,
+  "cross_validation_rows": 10,
+  "gnn_max_absolute_delta_from_rounded_historical_output": {
+    "MAE": 0.031969468,
+    "RMSE": 0.02662022779999995,
+    "R2": 0.008995301699999958
+  },
+  "new_clean_environment_install_tested": false
+}

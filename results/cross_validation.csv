@@ -1,0 +1,11 @@
+model,split,fold,R2
+RF_descriptors,shuffled_kfold_5,1,0.8497871769
+RF_descriptors,shuffled_kfold_5,2,0.8977384888
+RF_descriptors,shuffled_kfold_5,3,0.8860681976
+RF_descriptors,shuffled_kfold_5,4,0.8631253582
+RF_descriptors,shuffled_kfold_5,5,0.8818551181
+RF_combined,modified_groupkfold_5,1,0.7327327796
+RF_combined,modified_groupkfold_5,2,0.8852146511
+RF_combined,modified_groupkfold_5,3,0.8886924228
+RF_combined,modified_groupkfold_5,4,0.8459293582
+RF_combined,modified_groupkfold_5,5,0.8664359645
