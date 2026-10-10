@@ -1,7 +1,6 @@
 # AI for Chemistry：ESOL 水溶解度预测
 
-本项目学习如何从分子结构预测水溶解度：使用 RDKit 构建分子描述符和 Morgan 指纹，训练定量构效关系（QSPR）随机森林；再使用图神经网络（GNN）直接学习原子和化学键组成的分子图。项目已进入收尾阶段，保留已有实验，不继续调参或增加实验。
-
+本项目学习如何从分子结构预测水溶解度：使用 RDKit 构建分子描述符和 Morgan 指纹，训练定量构效关系（QSPR）随机森林；再使用图神经网络（GNN）直接学习原子和化学键组成的分子图。
 ## 数据
 
 使用 `data/delaney-processed.csv`，共 1128 行、10 列。目标列为 `measured log solubility in mols per litre`，即 **logS = log10(S / (mol L⁻¹))**；分子结构由 `smiles` 列提供。数据自带的 ESOL predicted 列仅用于探索，没有输入训练模型。
@@ -29,7 +28,7 @@ Delaney ESOL/
 └── README.md
 ```
 
-保留当前项目目录名，以免影响已有工作区路径。`archive/original_notebook.zip` 保存整理前的完整 `ESOL.ipynb`（含当时未提交的 GNN 代码与输出），仅供历史追溯；最终运行入口是 `notebooks/` 中的三份笔记。
+`archive/original_notebook.zip` 保存整理前的完整 `ESOL.ipynb`（含当时未提交的 GNN 代码与输出），仅供历史追溯；最终运行入口是 `notebooks/` 中的三份笔记。
 
 已验证使用 Windows 下的 **Python 3.12.15 / conda `chem-ai`** 环境。已有该环境时，在项目根目录运行：
 
