@@ -5,7 +5,7 @@
 
 使用 `data/delaney-processed.csv`，共 1128 行、10 列。目标列为 `measured log solubility in mols per litre`，即 **logS = log10(S / (mol L⁻¹))**；分子结构由 `smiles` 列提供。数据自带的 ESOL predicted 列仅用于探索，没有输入训练模型。
 
-数据对应 Delaney 的 ESOL 数据，公开处理版本见 [DeepChem 数据文件](https://github.com/deepchem/deepchem/blob/master/datasets/delaney-processed.csv)，原始方法见 [Delaney, 2004, ESOL](https://doi.org/10.1021/ci034243x)。本项目保留原有本地文件，未重新下载或替换数据；本地文件与当前远端版本的字节一致性尚未验证。
+数据对应 Delaney 的 ESOL 数据，公开处理版本见 [DeepChem 数据文件](https://github.com/deepchem/deepchem/blob/master/datasets/delaney-processed.csv)，原始方法见 [Delaney, 2004, ESOL](https://doi.org/10.1021/ci034243x)。
 
 原始文件 SHA256：`3fa1b501b2f940d4b016c3798f5fcd4c897b8455a0217efbb3715ac35011f290`。运行时检查必要列、缺失目标、无效 SMILES、空分子及重复结构；发现无效数据时停止，重复结构只报告，未删除或修改原始记录。
 
@@ -22,13 +22,13 @@ Delaney ESOL/
 │   ├── model_comparison.csv
 │   └── cross_validation.csv
 ├── archive/
-│   ├── original_notebook.zip
+│   ├── original_notebook
 │   └── validation.json
 ├── requirements.txt
 └── README.md
 ```
 
-`archive/original_notebook.zip` 保存整理前的完整 `ESOL.ipynb`（含当时未提交的 GNN 代码与输出），仅供历史追溯；最终运行入口是 `notebooks/` 中的三份笔记。
+`archive/original_notebook` 保存整理前的完整 `ESOL.ipynb`（含当时未提交的 GNN 代码与输出），供历史追溯。
 
 已验证使用 Windows 下的 **Python 3.12.15 / conda `chem-ai`** 环境。已有该环境时，在项目根目录运行：
 
@@ -47,7 +47,7 @@ python -m ipykernel install --user --name esol-final --display-name "Python (eso
 python -m jupyterlab
 ```
 
-打开三份笔记，选择安装了依赖的内核，按 `01 → 02 → 03` 执行 **Restart Kernel and Run All Cells**。每份笔记均自行读取数据，不共享内核变量；从项目根目录或 `notebooks/` 启动都可定位数据。`02` 与 `03` 分别更新最终比较表中自己的结果；首次复现需运行两份训练笔记才能生成完整表。笔记保存了本次执行输出，重跑会更新输出和结果 CSV，历史原版仍在归档 ZIP 中。
+打开三份笔记，选择安装了依赖的内核，按 `01 → 02 → 03` 执行 **Restart Kernel and Run All Cells**。每份笔记均自行读取数据，不共享内核变量；从项目根目录或 `notebooks/` 启动都可定位数据。`02` 与 `03` 分别更新最终比较表中自己的结果；首次复现需运行两份训练笔记才能生成完整表。笔记保存了本次执行输出，重跑会更新输出和结果 CSV。
 
 `requirements.txt` 固定本次验证环境的直接依赖版本；不同系统、底层计算库或 PyTorch 构建仍可能产生数值差异。无需安装 PyTorch Geometric 或使用 GPU。
 
@@ -75,7 +75,7 @@ python -m jupyterlab
 | GNN：Bond-aware | 固定随机划分，3 种子 | 0.6858 ± 0.0176 | 0.8950 ± 0.0159 | 0.8305 ± 0.0060 |
 | GNN：Enhanced | 固定随机划分，3 种子 | 0.6398 ± 0.0222 | 0.8398 ± 0.0286 | 0.8507 ± 0.0102 |
 
-收尾复现明确固定了 CPU 单线程与确定性算法，GNN 数值可能与原 Notebook 的历史输出不同。此处只报告本次完整重跑结果；原始历史输出保存在归档 ZIP 内，没有挑选更优运行替换结果。
+收尾复现明确固定了 CPU 单线程与确定性算法，GNN 数值可能与原 Notebook 的历史输出不同。此处只报告本次完整重跑结果。
 
 `model_comparison.csv` 记录每个模型、划分、种子、样本数、最佳 epoch 与 MAE/RMSE/R²；MAE、RMSE 在原始 logS 标度计算，越低越好，R² 越高越好。GNN 汇总为三个训练种子的均值 ± 样本标准差（ddof=1）。
 
@@ -96,7 +96,3 @@ python -m jupyterlab
 | `01_data_exploration.ipynb` | 10 | 通过 |
 | `02_qspr_random_forest.ipynb` | 10 | 通过 |
 | `03_gnn_training.ipynb` | 12 | 通过 |
-
-另已检查 Notebook 格式与代码语法、依赖版本、数据划分覆盖和互斥、结果表完整性及有限数值、归档 ZIP 完整性、原始数据 SHA256。核对后确认原始数据未改变。新建环境的完整安装尚未另行测试。
-
-本机验证直接调用 conda 环境的 Python 时，需要在该进程中加载环境的 `Library/bin` DLL 路径；正常使用应先 `conda activate` 再启动 Jupyter。验证没有安装新包、改变模型参数或修改系统环境。
